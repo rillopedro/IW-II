@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function exibirMenu() {
+            return prompt(
+                "===== MENU INTERATIVO =====\n" +
+                "1 - Ver mensagem\n" +
+                "2 - Calcular média\n" +
+                "3 - Sair\n" +
+                "Escolha uma opção:"
+            );
+        }
+
+        function executarOpcao(opcao) {
+            switch (opcao) {
+                case "1":
+                    alert("Olá! Bem-vindo ao menu interativo.");
+                    break;
+                case "2":
+                    let n1 = parseFloat(prompt("Digite sua primeira Nota:")) 
+                    let n2 = parseFloat(prompt("Digite sua segunda Nota:"))
+                    if (isNaN(n1) || isNaN(n2)){
+                        alert("Erro: Digite números validos");
+                    }else if(n1 >10 || n2 >10){
+                        alert("Erro: Digite notas válidas")
+                        break
+                    }else{
+                        var media = (n1 + n2)/2;
+                        var estado = "";
+                    }
+                    if (media >= 7){
+                        estado = "Aprovado";
+                    }else if(media >=5){
+                        estado = "de Recuperação";
+                    }else{
+                        estado = "Reprovado";
+                    }
+                        alert("Você esta "+estado);
+                   
+                    break;
+                case"3":
+                    alert("Saindo... Até mais!");
+                    return false;
+                default:
+                    alert("Opção inválida. Tente novamente.");
+            }
+            return true;
+        }
+
+        function iniciarMenu() {
+            let continuar = true;
+            while (continuar) {
+                let opcao = exibirMenu();
+                continuar = executarOpcao(opcao);
+            }
+        }
+
+        iniciarMenu();
+    </script>
+
+</head>
+<body>
+    
+
+
+
+
+
+</body>
+</html>
