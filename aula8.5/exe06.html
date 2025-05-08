@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="text" id="conteudo">HMMM BOLO DE MURANGO</div>
+<button id="copiar">Copiar</button>
+
+<script>
+document.getElementById("copiar").addEventListener("click", function() {
+    const conteudo = document.getElementById("conteudo").textContent;
+    navigator.clipboard.writeText(conteudo).then(() => {
+        alert("Copiado para área de transferência!");
+    });
+});
+</script>
+</body>
+</html>

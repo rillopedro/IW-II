@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <ul id="listaMovel">
+        <li>Item 1 <button class="mover-cima">↑</button> <button class="mover-baixo">↓</button></li>
+        <li>Item 2 <button class="mover-cima">↑</button> <button class="mover-baixo">↓</button></li>
+        <li>Item 3 <button class="mover-cima">↑</button> <button class="mover-baixo">↓</button></li>
+    </ul>
+    
+    <script>
+    document.addEventListener("click", function(e) {
+        const li = e.target.closest("li");
+        if(!li) return;
+        
+        if(e.target.classList.contains("mover-cima")) {
+            if(li.previousElementSibling) {
+                li.parentNode.insertBefore(li, li.previousElementSibling);
+            }
+        } else if(e.target.classList.contains("mover-baixo")) {
+            if(li.nextElementSibling) {
+                li.parentNode.insertBefore(li.nextElementSibling, li);
+            }
+        }
+    });
+    </script>
+</body>
+</html>
