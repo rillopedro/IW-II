@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercício 10 - Esconder e mostrar paragráfo</h1>
+        <p id="paragrafo"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus autem totam aliquam
+            explicabo nulla nesciunt laudantium incidunt pariatur quae voluptas ut, perferendis tempora nisi vero id
+            quasi
+            debitis. Asperiores, aliquid. </p>
+        <button id="botao">Clique aqui!</button>
+    </div>
+    <script>
+        function escondemostpara(){
+    const paragrafo = document.getElementById('paragrafo')
+    if (paragrafo.style.display=="block"  || paragrafo.style.display === ""){
+        paragrafo.style.display="none";
+    } else if (paragrafo.style.display=="none"){
+        paragrafo.style.display="block"
+    };
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("botao").addEventListener("click", escondemostpara);
+})
+    </script>
+</body>
+</html>

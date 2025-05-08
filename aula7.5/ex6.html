@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercício 6 - Mostrar um título e paragráfo</h1>
+        <div id="divd">DIV AQUI</div>
+        <button id="botao">Clique aqui!</button>
+    </div>
+    <script>
+        function h1par(){
+    document.getElementById('divd').innerHTML = '<h1>Título</h1><br><p>Paragráfo</p>'
+}
+
+
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("botao").addEventListener("click", h1par);
+})
+    </script>
+</body>
+</html>

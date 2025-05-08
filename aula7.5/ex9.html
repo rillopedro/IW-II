@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercício 9 - Mudar tamanho do paragráfo</h1>
+        <p id="paragrafom">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure cupiditate explicabo, labore
+            rerum
+            laudantium maxime repellendus officia nostrum consequuntur, corporis iste id ducimus voluptatem blanditiis
+            cum
+            distinctio est! Fugit, odit.</p>
+        <button id="botao">Aumente o tamanho da fonte!</button>
+    </div>
+    <script>
+        function aumentafonte(){
+    const paragrafo = document.getElementById('paragrafom')
+
+    let atual = parseInt(paragrafo.style.fontSize || 30)
+    atual += 2
+    paragrafo.style.fontSize= atual + "px";
+
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("botao").addEventListener("click", aumentafonte);
+})
+    </script>
+</body>
+</html>

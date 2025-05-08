@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="paragrafoEsconder">Este é um parágrafo que será escondido.</p>
+<button id="meuBotao5">Esconder Parágrafo</button>
+
+<script>
+    function esconderParagrafo() {
+    document.getElementById("paragrafoEsconder").style.display = "none";
+  }
+  
+  document.getElementById("meuBotao5").addEventListener("click", esconderParagrafo);
+</script>
+</body>
+</html>

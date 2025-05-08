@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Clique no botão para descobrir a frase</p>
+    <button onclick="mostrarMensagem()">Revelar mensagem</button>
+    <script>
+        
+function mostrarMensagem() {
+    alert("JavaScript é divertido!");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("botaoFrase").addEventListener("click", saudacao);
+}); 
+    </script>
+</body>
+</html>

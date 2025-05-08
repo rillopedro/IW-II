@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Exercício 7 - Mudar cor do paragráfo</h1>
+        <p id="paragrafo">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque laborum debitis soluta neque
+            nihil nesciunt deleniti cumque incidunt, illo ratione aut dolore vitae maxime consequatur corporis minus
+            magnam
+            laboriosam nisi.</p>
+        <button id="botao">Mudar a cor</button>
+    </div>
+    <script>
+        function mudacp(){
+    const paragrafo = document.getElementById('paragrafo')
+    paragrafo.style.color="red";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("botao").addEventListener("click", mudacp);
+})
+    </script>
+</body>
+</html>

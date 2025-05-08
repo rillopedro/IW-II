@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="texto">Texto inicial</p>
+<button id="meuBotao2">Mudar Texto</button>
+
+<script>
+    function mudarTexto() {
+    document.getElementById("texto").textContent = "Texto atualizado com JavaScript!";
+  }
+  
+  document.getElementById("meuBotao2").addEventListener("click", mudarTexto);
+</script>
+</body>
+</html>

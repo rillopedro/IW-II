@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="campoNome" placeholder="Digite seu nome">
+<button id="meuBotao4">Exibir Nome</button>
+
+<script>
+    function exibirNome() {
+    const nomeDigitado = document.getElementById("campoNome").value;
+    alert("Nome digitado: " + nomeDigitado);
+  }
+  
+  document.getElementById("meuBotao4").addEventListener("click", exibirNome);
+</script>
+</body>
+</html>
