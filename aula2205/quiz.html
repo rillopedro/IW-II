@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .timer {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .question p {
+            margin-top: 0;
+            font-weight: bold;
+        }
+
+        .question label {
+            display: block;
+            padding: 8px;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        .question label:hover {
+            background: #f0f0f0;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            max-width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f8f8;
+            border-radius: 5px;
+        }
+
+        /* Respostas corretas/incorretas */
+        .correct {
+            color: green;
+        }
+
+        .incorrect {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Quiz de 10 Perguntas</h1>
+    <div class="timer" id="timer">Tempo: 0s</div>
+    <form id="quizForm">
+        <!-- Perguntas serão injetadas aqui via JS -->
+    </form>
+    <button onclick="finalizarQuiz()">Finalizar</button>
+    <div class="result" id="resultado"></div>
+    <script>
+        const perguntas = [
+            { pergunta: "Qual é a capital do Brasil?", opcoes: ["São Paulo", "Brasília", "Rio de Janeiro", "Salvador", "Belo Horizonte"], correta: 1 },
+            { pergunta: "Qual o resultado de 2 + 2?", opcoes: ["3", "4", "5", "22", "2"], correta: 1 },
+            { pergunta: "Qual é a linguagem da web?", opcoes: ["Python", "c++", "HTML", "Java", "Ruby"], correta: 2 },
+            { pergunta: "Qual elemento simboliza a água?", opcoes: ["H20", "O2", "MacL", "CO2", "C6H1206"], correta: 0 },
+            { pergunta: "Quem descobriu o Brasil?", opcoes: ["Dom Pedro I", "Tiradentês", "Pedro Álvares Cabral", "Getúlio Vargas", "Lula"], correta: 2 },
+            { pergunta: "Qual o maior planeta do sistema solar?", opcoes: ["Terra", "Marte", "Vênus", "Júpiter", "Saturno"], correta: 3 },
+            { pergunta: "Qual a cor do cavalo branco de Napoleão?", opcoes: ["Preto", "Marrom", "Cinza", "Branco", "Verde"], correta: 3 },
+            { pergunta: "Quem escreveu Dom Casmurro?", opcoes: ["Machado de Assis", "José de Alencar", "Clarice Lispector", "Graciliano Ramos", "Paulo Coelho"], correta: 0 },
+            { pergunta: "Qual continente é o Brasil?", opcoes: ["Europa", "Ásia", "América do Sul", "África", "Oceania"], correta: 2 },
+            { pergunta: "Qual o símbolo do ferro?", opcoes: ["Fe", "Ir", "F", "Fr", "I"], correta: 0 }
+        ];
+
+        const form = document.getElementById("quizForm");
+        let tempo = 0;
+        let intervalo;
+
+        function iniciaQuiz() {
+            perguntas.forEach((q, index) => {
+                const div = document.createElement("div");
+                div.classList.add("question");
+                div.innerHTML = `<p><strong>${index + 1}. ${q.pergunta}</strong></p>` +
+                    q.opcoes.map((opcao, i) =>
+                        `<label><input type="radio" name="q${index}" value="${i}"> ${opcao}</label><br>`
+                    ).join("");
+                form.appendChild(div);
+            });
+
+            intervalo = setInterval(() => {
+                tempo++;
+                document.getElementById("timer").innerText = `Tempo: ${tempo}s`;
+            }, 1000);
+        }
+
+        function finalizarQuiz() {
+            clearInterval(intervalo);
+            let corretas = 0;
+            let erradas = 0;
+
+            perguntas.forEach((q, index) => {
+                const selecionado = form.querySelector(`input[name="q${index}"]:checked`);
+                const opcoes = form.querySelectorAll(`input[name="q${index}"]`);
+
+                opcoes.forEach((op, i) => {
+                    const label = op.parentElement;
+                    // Limpa ícones antigos
+                    label.innerHTML = label.innerHTML.replace(/[✓X]/g, '');
+
+                    if (i == q.correta) {
+                        label.innerHTML += ' ✓';
+                    } else if (op.checked && i != q.correta) {
+                        label.innerHTML += ' X';
+                    }
+                });
+
+                if (selecionado) {
+                    if (parseInt(selecionado.value) === q.correta) {
+                        corretas++;
+                    } else {
+                        erradas++;
+                    }
+                }
+                else {
+                    erradas++;
+                }
+            });
+            document.getElementById("resultado").innerText = `Você acertou ${corretas} e errou ${erradas}. Tempo total: ${tempo}s.`;
+        }
+
+        window.onload = iniciaQuiz;
+    </script>
+</body>
+
+</html>
