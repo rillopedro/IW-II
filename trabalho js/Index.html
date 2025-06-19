@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokempo/Cronômetro/Termostato</title>
+</head>
+<body>
+   <div class="container">
+        <header>
+            <h1>Jokempo/Cronômetro/Termostato</h1>
+        </header>
+        
+        <section class="card">
+            <h2>🌡️ Temperatura Atual</h2>
+            <div id="temperatura-display">Carregando...</div>
+        </section>
+        
+        <section class="card">
+            <h2>⏱️ Cronômetro</h2>
+            <div id="display">00:00:00</div>
+            <div class="buttons">
+                <button id="start" class="btn green">Iniciar</button>
+                <button id="pause" class="btn yellow">Pausar</button>
+                <button id="reset" class="btn red">Resetar</button>
+            </div>
+        </section>
+        
+        <section class="card">
+            <h2>✊✋✌️ Jogo</h2>
+            <div class="game-container">
+                <div class="options">
+                    <button class="move" data-move="pedra">✊</button>
+                    <button class="move" data-move="papel">✋</button>
+                    <button class="move" data-move="tesoura">✌️</button>
+                </div>
+                <div id="game-result">
+                    <p>Faça sua jogada!</p>
+                </div>
+                <div class="score">
+                    <p>Você: <span id="player-score">0</span></p>
+                    <p>PC: <span id="computer-score">0</span></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
